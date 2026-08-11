@@ -132,8 +132,7 @@ nav ul li a:hover {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
     position: relative;
     background-size: cover;
     background-position: center;
@@ -146,26 +145,55 @@ nav ul li a:hover {
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(44, 62, 80, 0.7); /* Antrasit Tonunda Transparan Katman */
+    background: linear-gradient(to right, rgba(28, 35, 39, 0.9) 0%, rgba(28, 35, 39, 0.3) 100%);
 }
 
 .hero-content {
     position: relative;
     z-index: 1;
     color: var(--white);
+    text-align: left; /* Metni sola yaslar */
+    padding-left: 8%; /* Ekranın solundan boşluk bırakır */
+    max-width: 800px;
 }
 
 .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif; /* Elit ve kurumsal yeni fontumuz */
+    font-size: 5.5rem;
+    margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.6); /* Arka plandan kopması için gölge */
 }
 
 .hero-content p {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
     font-weight: 300;
-    color: #e0e0e0;
+    color: #f1f1f1;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+}
+
+/* Hero Mobil Uyum (Responsive) - Bu kısmı CSS'in en altındaki medya sorgusu içine veya direkt buraya koyabilirsin */
+@media (max-width: 900px) {
+    #hero {
+        justify-content: center; /* Mobilde yazıyı tekrar ortalayalım ki şık dursun */
+    }
+    .hero-overlay {
+        background: rgba(28, 35, 39, 0.6); /* Mobilde düz şeffaflık */
+    }
+    .hero-content {
+        padding-left: 5%;
+        padding-right: 5%;
+        text-align: center;
+    }
+    .hero-content h1 {
+        font-size: 3.2rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
 }
 
 /* Izgara Sistemi (Grid) */
