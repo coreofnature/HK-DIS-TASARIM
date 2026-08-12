@@ -17,10 +17,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }));
     }
 
-    // --- 2. Hero Section Arka Plan Slider (Kusursuz Fade-In / Fade-Out) ---
+    // --- 2. Hero Section Arka Plan Slider & Progress Bar ---
     const heroSection = document.getElementById('hero');
+    const currentSlideEl = document.getElementById('current-slide');
+    const totalSlidesEl = document.getElementById('total-slides');
+    const progressFill = document.getElementById('progress-fill');
     
-    // Masaüstü ve Mobil için banner listeleri
+    // Masaüstü ve Mobil için banner listeleri (Kendi isimlerine göre ayarla)
     const desktopImages = [
         'assets/img/banner-1.jpg', 
         'assets/img/banner-2.jpg',
@@ -36,10 +39,13 @@ document.addEventListener("DOMContentLoaded", function() {
     let isMobile = window.innerWidth <= 768;
     let currentImages = isMobile ? mobileImages : desktopImages;
     let currentIndex = 0;
+    const slideDuration = 4500; // 4 Saniye
 
-    // Pürüzsüz çapraz geçiş (crossfade) için iki arka plan katmanı oluşturuyoruz
-    heroSection.style.backgroundImage = 'none'; // CSS'teki varsayılan resmi eziyoruz
-    
+    // Toplam slayt sayısını yazdır (başına 0 ekleyerek)
+    totalSlidesEl.textContent = currentImages.length.toString().padStart(2, '0');
+
+    // Çift katmanlı pürüzsüz geçiş için background katmanları
+    heroSection.style.backgroundImage = 'none'; 
     const bg1 = document.createElement('div');
     const bg2 = document.createElement('div');
     
@@ -48,56 +54,78 @@ document.addEventListener("DOMContentLoaded", function() {
         top: 0; left: 0; width: 100%; height: 100%;
         background-size: cover;
         background-position: center;
-        transition: opacity 1.5s ease-in-out; /* 1.5 saniyelik yumuşak geçiş */
+        transition: opacity 1.5s ease-in-out;
         z-index: 0;
     `;
     
     bg1.style.cssText = bgStyles;
     bg2.style.cssText = bgStyles;
-    bg2.style.opacity = '0'; // 2. katman başlangıçta gizli
+    bg2.style.opacity = '0'; 
     
-    // Katmanları hero section'ın içine (karanlık overlay'in arkasına) ekliyoruz
     heroSection.insertBefore(bg2, heroSection.firstChild);
     heroSection.insertBefore(bg1, heroSection.firstChild);
 
     let activeBg = bg1;
     let inactiveBg = bg2;
 
-    function setHeroBackground() {
-        // Sıradaki resmi görünmeyen (inaktif) katmana yükle
-        inactiveBg.style.backgroundImage = `url('${currentImages[currentIndex]}')`;
+    // Progress Bar ve Numarayı Güncelleyen Fonksiyon
+    function updateProgress() {
+        // Geçerli slayt numarasını güncelle
+        currentSlideEl.textContent = (currentIndex + 1).toString().padStart(2, '0');
         
-        // Görünmeyen katmanı yavaşça aydınlat (Fade In)
+        // Progress barı sıfırla
+        progressFill.style.transition = 'none';
+        progressFill.style.width = '0%';
+        
+        // Tarayıcıyı değişime zorla (Reflow)
+        void progressFill.offsetWidth;
+        
+        // Animasyonu başlat
+        progressFill.style.transition = `width ${slideDuration}ms linear`;
+        progressFill.style.width = '100%';
+    }
+
+    function setHeroBackground() {
+        inactiveBg.style.backgroundImage = `url('${currentImages[currentIndex]}')`;
         inactiveBg.style.opacity = '1';
-        // Görünen katmanı yavaşça karart (Fade Out)
         activeBg.style.opacity = '0';
         
-        // Katmanların rolünü değiştir (Swap)
         let temp = activeBg;
         activeBg = inactiveBg;
         inactiveBg = temp;
+
+        updateProgress();
     }
 
-    // Sayfa açıldığında ilk görseli yükle
+    // İlk açılış
     activeBg.style.backgroundImage = `url('${currentImages[currentIndex]}')`;
     activeBg.style.opacity = '1';
+    updateProgress();
 
-    // 5 saniyede bir görseli değiştir
-    setInterval(() => {
+    // Döngüyü başlat
+    let slideInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % currentImages.length;
         setHeroBackground();
-    }, 5000);
+    }, slideDuration);
 
-    // Ekran boyutu değişirse (PC'den mobile geçerse vs.)
+    // Ekran boyutu değişirse sistemi güncelle
     window.addEventListener('resize', () => {
         const newIsMobile = window.innerWidth <= 768;
         if (newIsMobile !== isMobile) {
             isMobile = newIsMobile;
             currentImages = isMobile ? mobileImages : desktopImages;
-            currentIndex = 0; // Başa dön
+            currentIndex = 0; 
+            totalSlidesEl.textContent = currentImages.length.toString().padStart(2, '0');
             
-            // Hemen yeni cihazın ilk görseline geçiş yap
             activeBg.style.backgroundImage = `url('${currentImages[currentIndex]}')`;
+            updateProgress();
+            
+            // İntervali sıfırla ki süre şaşmasın
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % currentImages.length;
+                setHeroBackground();
+            }, slideDuration);
         }
     });
 });

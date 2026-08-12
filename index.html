@@ -24,8 +24,8 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="#hero">Ana Sayfa</a></li>
-                    <li><a href="#urunler">Ürünler</a></li>
                     <li><a href="#hizmetler">Hizmetler</a></li>
+                    <li><a href="#urunler">Ürünler</a></li>
                     <li><a href="#referanslar">Referanslar</a></li>
                     <li><a href="#hakkimizda">Biz Kimiz?</a></li>
                     <li><a href="#iletisim">İletişim</a></li>
@@ -39,72 +39,37 @@
         </div>
     </header>
 
-    <!-- Ana Sayfa (Hero Slider) -->
+<!-- Ana Sayfa (Hero Slider) -->
     <section id="hero">
+        <!-- Arka plan katmanları JS ile buraya eklenecek -->
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>HK Dış Tasarım</h1>
-            <p>Dış Mekân Tasarımı • Parke Taşı • Peyzaj • Uygulama</p>
-        </div>
-    </section>
-
-    <!-- Ürünler -->
-    <section id="urunler" class="section-bg">
-        <div class="container">
-            <h2 class="section-title">Ürünlerimiz</h2>
-            <div class="grid-container">
-                <!-- Ürün Kartları -->
-                <div class="card">
-                    <img src="assets/img/hakan3.png" alt="Parke Taşları">
-                    <div class="card-content">
-                        <h3>Parke Taşları</h3>
-                        <p>Farklı model ve ölçülerde</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/hakan1.jpg" alt="Bordürler">
-                    <div class="card-content">
-                        <h3>Bordürler</h3>
-                        <p>Çevre ve yol kenarı</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-placeholder"><i class="fas fa-leaf"></i></div>
-                    <div class="card-content">
-                        <h3>Çim Taşı</h3>
-                        <p>Doğal görünümlü otopark çözümleri</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-placeholder"><i class="fas fa-water"></i></div>
-                    <div class="card-content">
-                        <h3>Oluk Taşı</h3>
-                        <p>Su yönlendirme sistemleri</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/hakan10.jpg" alt="Dekoratif Taşlar">
-                    <div class="card-content">
-                        <h3>Dekoratif Taşlar</h3>
-                        <p>Taş duvar ve dekorasyon</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-placeholder"><i class="fas fa-cubes"></i></div>
-                    <div class="card-content">
-                        <h3>Beton Elemanları</h3>
-                        <p>Altyapı ve peyzaj elemanları</p>
-                    </div>
-                </div>
+        <div class="container hero-content">
+            <h1>DIŞ MEKÂNLARA<br><span class="text-accent">DEĞER KATIYORUZ</span></h1>
+            <p>Modern dış mekân tasarımları,<br> kaliteli malzeme ve profesyonel  uygulama ile <br> uzun yıllar kullanılacak yaşam alanları inşa ediyoruz.</p>
+            
+            <div class="hero-buttons">
+                <a href="#referanslar" class="btn-hero-primary">REFERANSLARIMIZ <i class="fas fa-arrow-right"></i></a>
+                <a href="mailto:hkhakankaymak@gmail.com?subject=HK%20Dış%20Tasarım%20-%20Fiyat%20Teklifi%20Talebi" class="btn-hero-secondary">TEKLİF AL <i class="fas fa-arrow-right"></i></a>
             </div>
+        </div>
+
+        <!-- Slider İlerleme Çubuğu (Progress Bar) -->
+        <div class="slider-progress-container">
+            <span id="current-slide">01</span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span id="total-slides">05</span>
         </div>
     </section>
 
     <!-- Hizmetler -->
-    <section id="hizmetler">
+    <section id="hizmetler" class="section-bg">
         <div class="container">
             <h2 class="section-title">Hizmetlerimiz</h2>
-            <div class="grid-container services-grid">
+            <!-- Masaüstünde tek sıra, mobilde kaydırmalı olacak yapı -->
+            <div class="services-row">
+                <!-- Eğer ileride ikon yerine görsel kullanmak istersen <i> etiketini silip <img> ekleyebilirsin -->
                 <div class="service-box">
                     <i class="fas fa-layer-group service-icon"></i>
                     <h3>Parke Taşı Döşeme</h3>
@@ -139,16 +104,68 @@
         </div>
     </section>
 
+    <!-- Ürünler -->
+    <section id="urunler">
+        <div class="container">
+            <h2 class="section-title">Ürünlerimiz</h2>
+            <!-- Hem masaüstü hem mobilde kaydırmalı olacak yapı -->
+            <div class="products-slider">
+                <div class="card">
+                    <img src="assets/img/ref3.png" alt="Parke Taşları">
+                    <div class="card-content">
+                        <h3>Parke Taşları</h3>
+                        <p>Farklı model ve ölçülerde</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/ref1.jpg" alt="Bordürler">
+                    <div class="card-content">
+                        <h3>Bordürler</h3>
+                        <p>Çevre ve yol kenarı</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-placeholder"><i class="fas fa-leaf"></i></div>
+                    <div class="card-content">
+                        <h3>Çim Taşı</h3>
+                        <p>Doğal görünümlü otopark çözümleri</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-placeholder"><i class="fas fa-water"></i></div>
+                    <div class="card-content">
+                        <h3>Oluk Taşı</h3>
+                        <p>Su yönlendirme sistemleri</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/ref10.jpg" alt="Dekoratif Taşlar">
+                    <div class="card-content">
+                        <h3>Dekoratif Taşlar</h3>
+                        <p>Taş duvar ve dekorasyon</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-placeholder"><i class="fas fa-cubes"></i></div>
+                    <div class="card-content">
+                        <h3>Beton Elemanları</h3>
+                        <p>Altyapı ve peyzaj elemanları</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Referanslar -->
     <section id="referanslar" class="section-bg">
         <div class="container">
             <h2 class="section-title">Referans İşlerimiz</h2>
             <div class="gallery-container">
-                <div class="gallery-item"><img src="assets/img/hakan1.jpg" alt="Referans 1"></div>
-                <div class="gallery-item"><img src="assets/img/hakan2.jpg" alt="Referans 2"></div>
-                <div class="gallery-item"><img src="assets/img/hakan3.png" alt="Referans 3"></div>
-                <div class="gallery-item"><img src="assets/img/hakan9.jpg" alt="Referans 4"></div>
-                <div class="gallery-item"><img src="assets/img/hakan10.jpg" alt="Referans 5"></div>
+                <div class="gallery-item"><img src="assets/img/ref1.jpg" alt="Referans 1"></div>
+                <div class="gallery-item"><img src="assets/img/ref2.jpg" alt="Referans 2"></div>
+                <div class="gallery-item"><img src="assets/img/ref3.png" alt="Referans 3"></div>
+                <div class="gallery-item"><img src="assets/img/ref9.jpg" alt="Referans 4"></div>
+                <div class="gallery-item"><img src="assets/img/ref10.jpg" alt="Referans 5"></div>
             </div>
         </div>
     </section>
