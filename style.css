@@ -434,16 +434,72 @@ header.header-scrolled .hamburger {
 }
 
 /* Hakkımızda */
-.about-container {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+/* --- Nasıl Çalışıyoruz? (Süreç Adımları) --- */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Masaüstünde yan yana 4 kutu */
+    gap: 30px;
+    margin-top: 10px;
 }
 
-.about-text p {
-    margin-bottom: 1.5rem;
+.process-step-box {
+    background-color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden; /* Dışarı taşan dev numaraları gizler */
+}
+
+.process-step-box:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+/* Arka plandaki şık filigran sayı tasarımı */
+.step-number {
+    position: absolute;
+    top: -25px; /* Tavandan içeri aldık */
+    right: 15px; /* Sağ sınırdan içeri çektik, kesilme düzelecek */
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    font-weight: 700;
+    color: rgba(191, 161, 129, 0.12); /* Başlangıçtaki solukluğu da çok azıcık artırdık */
+    z-index: 0;
+    transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.process-step-box:hover .step-number {
+    color: rgba(191, 161, 129, 0.5); /* Üzerine gelindiğinde bej rengi %50 doygunluğa ulaşarak çok net patlayacak */
+    transform: scale(1.05); /* Üzerine gelince rakam çok hafif büyüyerek daha şık bir hissiyat verecek */
+}
+
+/* Ön plandaki ikonlar ve yazılar */
+.process-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1; /* Numaraların üstünde durması için */
+}
+
+.process-step-box h3 {
+    color: var(--primary-color);
     font-size: 1.1rem;
-    line-height: 1.8;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.process-step-box p {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
 }
 
 /* İletişim */
@@ -607,4 +663,10 @@ footer {
         min-width: 260px; 
         scroll-snap-align: start;
     } 
+
+    /* Nasıl Çalışıyoruz Mobil Ayarı */
+    .process-grid {
+        grid-template-columns: 1fr; /* Mobilde alt alta tek sütun olur */
+        gap: 20px;
+    }
 }
