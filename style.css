@@ -77,14 +77,45 @@ header.header-scrolled {
 
 .nav-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
+    justify-content: space-between; 
+    align-items: center; /* Diğer menü elemanlarını ortalar */
+    height: 120px; /* Büyük logo için ana container yüksekliğini artırdık */
     transition: height 0.4s ease;
 }
 
-header.header-scrolled .nav-container {
-    height: 70px; 
+header.header-scrolled .nav-container,
+header.mobile-menu-open .nav-container {
+    height: 70px; /* Beyaz navbar'a geçince daralan orijinal yükseklik */
+}
+
+/* LOGO KONUMLANDIRMA (YENİ EKLENDİ) */
+.logo {
+    align-self: flex-start; /* Sadece logoyu tavana doğru çeker */
+    margin-top: 15px; /* Tavandan hafif boşluk */
+    margin-left: -30px; /* Logoyu sola doğru normal hizasından daha dışarı çeker */
+    transition: all 0.4s ease; /* Kaydırırken yumuşak geçiş sağlar */
+}
+
+header.header-scrolled .logo,
+header.mobile-menu-open .logo {
+    align-self: center; /* Tekrar ortaya hizalanır */
+    margin-top: 0;
+    margin-left: 0;
+}
+
+/* Dinamik Logo Boyut Ayarları */
+.nav-logo {
+    height: 140px; /* Eski 70px'in tam iki katı! Devasa ve şık. */
+    width: auto;
+    transition: all 0.4s ease;
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.4)); 
+}
+
+/* Sayfa kaydırıldığında logo küçülür */
+header.header-scrolled .nav-logo,
+header.mobile-menu-open .nav-logo {
+    height: 45px; /* Beyaz menüye geçince logo zarifçe küçülür */
+    filter: none; /* Beyaz zeminde gölgeye gerek yok */
 }
 
 nav ul {
@@ -490,6 +521,21 @@ footer {
         padding: 10px 0;
         display: block;
     }
+
+    /* Mobilde Dinamik Logo Ayarı */
+    .logo {
+        margin-left: -15px; /* Mobilde de biraz sola çekiyoruz */
+    }
+
+    /* Mobilde Dinamik Logo Ayarı */
+    .nav-logo {
+        height: 100px; /* Mobilde de eski 55px'in neredeyse iki katı */
+    }
+    
+    header.header-scrolled .nav-logo,
+    header.mobile-menu-open .nav-logo {
+        height: 40px; /* Beyaz menüde sorunsuz haline geri döner */
+    }
     
     .hamburger {
         display: block;
@@ -499,15 +545,16 @@ footer {
         display: none; 
     }
 
-    #hero {
+#hero {
         align-items: flex-end; 
         justify-content: flex-start; 
-        padding-bottom: 100px; 
+        padding-bottom: 230px;
     }
     
-    .hero-overlay {
-        background: linear-gradient(to right, rgba(28, 35, 39, 0.9) 0%, rgba(28, 35, 39, 0.4) 80%),
-                    linear-gradient(to top, rgba(28, 35, 39, 0.9) 0%, transparent 50%);
+.hero-overlay {
+        /* 0.9 olan koyulukları 0.6'ya, 0.4 olanı ise 0.1'e çektik. Sis oldukça hafifledi. */
+        background: linear-gradient(to right, rgba(28, 35, 39, 0.6) 0%, rgba(28, 35, 39, 0.1) 80%),
+                    linear-gradient(to top, rgba(28, 35, 39, 0.6) 0%, transparent 50%);
     }
 
     .hero-content {
@@ -515,6 +562,11 @@ footer {
         margin: 0; 
         padding-left: 6%; 
         padding-right: 5%;
+    }
+
+    .hero-logo {
+        width: 140px; /* Mobilde logonun boyutu daha küçük ve kibar olacak */
+        margin-bottom: 15px;
     }
 
     .hero-content h1 {
