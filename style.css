@@ -1,8 +1,8 @@
-/* CSS Değişkenleri - Renk Paleti */
+/* CSS Değişkenleri - Renk Paleti Güncellemesi */
 :root {
-    --primary-color: #1c2327; /* Logondaki koyu antrasit/lacivert arka plana daha yakın bir ton */
-    --secondary-color: #151a1d; /* Footer ve koyu alanlar için */
-    --accent-color: #bfa181; /* Logondaki K harfinin bej/gold tonu */
+    --primary-color: #1c2327; 
+    --secondary-color: #151a1d; 
+    --accent-color: #bfa181; 
     --bg-light: #F8F9FA; 
     --text-color: #333333;
     --white: #FFFFFF;
@@ -59,13 +59,20 @@ section {
 
 /* Header & Menü */
 header {
-    background-color: var(--primary-color);
+    background-color: transparent; 
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+    padding: 10px 0; 
+}
+
+/* Sayfa kaydırıldığında VEYA mobil menü açıldığında devreye giren beyaz tasarım */
+header.header-scrolled {
+    background-color: rgba(255, 255, 255, 0.95); 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    padding: 0; 
 }
 
 .nav-container {
@@ -73,76 +80,87 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 80px;
+    transition: height 0.4s ease;
 }
 
-.logo {
-    color: var(--white);
-    font-size: 1.8rem;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.logo span {
-    color: var(--accent-color);
-    font-weight: 300;
+header.header-scrolled .nav-container {
+    height: 70px; 
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 nav ul li a {
-    color: var(--white);
+    color: var(--accent-color); 
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700; 
     font-size: 0.95rem;
-    transition: color 0.3s;
+    transition: color 0.3s, text-shadow 0.3s;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); 
+}
+
+header.header-scrolled nav ul li a {
+    text-shadow: none;
 }
 
 nav ul li a:hover {
-    color: var(--accent-color);
+    color: var(--primary-color); 
 }
 
 .btn-teklif {
-    background-color: var(--accent-color);
-    color: var(--white);
-    padding: 10px 25px;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    padding: 8px 24px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: 700;
-    transition: background 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+header.header-scrolled .btn-teklif {
+    text-shadow: none;
+    box-shadow: none;
 }
 
 .btn-teklif:hover {
-    background-color: #556B2F;
+    background-color: var(--accent-color);
+    color: var(--white);
     transform: translateY(-2px);
 }
 
 .hamburger {
     display: none;
-    color: var(--white);
-    font-size: 1.5rem;
+    color: var(--accent-color);
+    font-size: 1.6rem;
     cursor: pointer;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+header.header-scrolled .hamburger {
+    text-shadow: none;
 }
 
 /* Hero Section (Geçişli Arka Plan) */
 #hero {
     height: 100vh;
     display: flex;
-    align-items: flex-end; /* İçeriği aşağıya çeker */
-    justify-content: flex-start; /* İçeriği tam sola hizalar */
+    align-items: flex-end; 
+    justify-content: flex-start; 
     position: relative;
-    padding-bottom: 15vh; /* Alt kısımdan yüzde 15'lik bir boşluk bırakarak tam alta yapışmasını engeller */
+    padding-bottom: 15vh; 
 }
 
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    /* Soldan sağa ve aşağıdan yukarıya koyulaşan gradient gölge */
-    background: linear-gradient(to right, rgba(28, 35, 39, 0.9) 0%, rgba(28, 35, 39, 0.3) 60%),
-                linear-gradient(to top, rgba(28, 35, 39, 0.8) 0%, transparent 40%);
+    background: linear-gradient(to right, rgba(28, 35, 39, 0.65) 0%, rgba(28, 35, 39, 0.1) 60%),
+                linear-gradient(to top, rgba(28, 35, 39, 0.5) 0%, transparent 40%);
     z-index: 1;
 }
 
@@ -152,8 +170,8 @@ nav ul li a:hover {
     color: var(--white);
     text-align: left;
     max-width: 800px;
-    margin: 0; /* Container'dan gelen otomatik ortalamayı ezer! */
-    padding-left: 8%; /* Ekranın solundan şık bir boşluk bırakır */
+    margin: 0; 
+    padding-left: 8%; 
 }
 
 .hero-content h1 {
@@ -165,7 +183,7 @@ nav ul li a:hover {
 }
 
 .hero-content h1 .text-accent {
-    color: var(--accent-color); /* Logonun bej rengi */
+    color: var(--accent-color); 
 }
 
 .hero-content p {
@@ -250,63 +268,6 @@ nav ul li a:hover {
     height: 100%;
     width: 0%;
     background-color: var(--white);
-    /* JS ile genişliği anime edilecek */
-}
-
-/* Mobilde Hero Bölümü Ayarları */
-@media (max-width: 900px) {
-    
-    #hero {
-        align-items: flex-end; 
-        justify-content: flex-start; 
-        padding-bottom: 100px; /* Progress bar'ın üstünde durması için */
-    }
-    
-    .hero-overlay {
-        background: linear-gradient(to right, rgba(28, 35, 39, 0.9) 0%, rgba(28, 35, 39, 0.4) 80%),
-                    linear-gradient(to top, rgba(28, 35, 39, 0.9) 0%, transparent 50%);
-    }
-
-    .hero-content {
-        text-align: left; 
-        margin: 0; 
-        padding-left: 6%; 
-        padding-right: 5%;
-    }
-
-    .hero-content h1 {
-        font-size: 1.3rem;
-        margin-bottom: 8px;
-    }
-
-    .hero-content p {
-        font-size: 0.50rem; 
-        margin-bottom: 20px;
-        display: block; 
-        line-height: 1.4;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        align-items: flex-start; 
-        width: 100%;
-        gap: 8px; /* Butonlar arası boşluk daraldı */
-    }
-    
-    .hero-buttons a {
-        width: auto; 
-        padding: 10px 20px; /* Buton iç boşluğu daraldı */
-        font-size: 0.7rem; /* Buton yazısı küçültüldü */
-        justify-content: center;
-    }
-
-    .slider-progress-container {
-        bottom: 20px;
-    }
-    
-    .btn-teklif {
-        display: none; 
-    }
 }
 
 /* --- HİZMETLER (Masaüstü ve Mobil Kaydırmalı Yapı) --- */
@@ -367,52 +328,54 @@ nav ul li a:hover {
     font-size: 0.85rem;
 }
 
-/* --- ÜRÜNLER (Masaüstü ve Mobil: Kaydırmalı) --- */
-.products-slider {
+/* --- ÜRÜNLER VE REFERANSLAR (Kaydırmalı Kart Yapısı) --- */
+.products-slider, .references-slider {
     display: flex;
-    overflow-x: auto; /* Yatay kaydırmayı aktifleştirir */
+    overflow-x: auto;
     gap: 25px;
     padding-bottom: 25px;
-    scroll-snap-type: x mandatory; /* Kaydırırken kartların hizalanmasını sağlar */
+    scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
 
-/* Kaydırma Çubuğu Tasarımı (Sadece Ürünler İçin) */
-.products-slider::-webkit-scrollbar {
+/* Kaydırma Çubuğu Tasarımı */
+.products-slider::-webkit-scrollbar, .references-slider::-webkit-scrollbar {
     height: 6px;
 }
 
-.products-slider::-webkit-scrollbar-thumb {
+.products-slider::-webkit-scrollbar-thumb, .references-slider::-webkit-scrollbar-thumb {
     background-color: var(--accent-color);
     border-radius: 10px;
 }
 
-.products-slider::-webkit-scrollbar-track {
+.products-slider::-webkit-scrollbar-track, .references-slider::-webkit-scrollbar-track {
     background-color: #eaeaea;
     border-radius: 10px;
 }
 
-.products-slider .card {
-    flex: 0 0 calc(33.333% - 17px); /* Masaüstünde 3 kart yan yana görünür */
+/* Kart Tasarımı */
+.products-slider .card, .references-slider .card {
+    flex: 0 0 calc(33.333% - 17px); 
     scroll-snap-align: start;
-    background: var(--bg-light); /* Ürün bölümü beyaz olduğu için kartlar hafif gri olsun */
+    background: var(--white); 
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s ease;
 }
 
-.products-slider .card:hover {
+.products-slider .card:hover, .references-slider .card:hover {
     transform: translateY(-5px);
 }
 
-.products-slider .card img {
+.products-slider .card img, .references-slider .card img {
     width: 100%;
     height: 250px;
     object-fit: cover;
 }
 
-.products-slider .card-placeholder {
+.card-placeholder {
     width: 100%;
     height: 250px;
     background-color: #e9ecef;
@@ -423,46 +386,33 @@ nav ul li a:hover {
     color: #adb5bd;
 }
 
-.products-slider .card-content {
+.card-content {
     padding: 20px;
     text-align: center;
 }
 
-.products-slider .card-content h3 {
+.card-content h3 {
     color: var(--primary-color);
     margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
-/* Referanslar Galerisi */
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 15px;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.gallery-item img:hover {
-    transform: scale(1.03);
+.card-content p {
+    font-size: 0.9rem;
+    color: #666;
 }
 
 /* Hakkımızda */
 .about-container {
     max-width: 800px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .about-text p {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
-    text-align: justify;
+    line-height: 1.8;
 }
 
 /* İletişim */
@@ -502,38 +452,107 @@ footer {
     padding: 20px 0;
 }
 
-/* Mobil Uyum (Responsive) */
+/* --- Laptop ve Küçük Masaüstü Ekranları İçin Otomatik Küçültme --- */
+@media (max-width: 1200px) {
+    html {
+        font-size: 14px; 
+    }
+    
+    .hero-content h1 {
+        font-size: 4rem; 
+    }
+}
+
+/* --- Mobil Uyum (Responsive) --- */
 @media (max-width: 900px) {
-    .nav-menu {
+    
+    nav ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 100%; 
         left: 0;
         width: 100%;
-        background-color: var(--primary-color);
+        background-color: rgba(255, 255, 255, 0.95); 
         padding: 20px 0;
         text-align: center;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05); 
     }
 
-    .nav-menu.active {
+    nav ul.active {
         display: flex;
     }
 
+    nav ul li a {
+        color: var(--primary-color);
+        text-shadow: none; 
+        font-size: 1.1rem; 
+        padding: 10px 0;
+        display: block;
+    }
+    
     .hamburger {
         display: block;
     }
 
+    .btn-teklif {
+        display: none; 
+    }
+
+    #hero {
+        align-items: flex-end; 
+        justify-content: flex-start; 
+        padding-bottom: 100px; 
+    }
+    
+    .hero-overlay {
+        background: linear-gradient(to right, rgba(28, 35, 39, 0.9) 0%, rgba(28, 35, 39, 0.4) 80%),
+                    linear-gradient(to top, rgba(28, 35, 39, 0.9) 0%, transparent 50%);
+    }
+
+    .hero-content {
+        text-align: left; 
+        margin: 0; 
+        padding-left: 6%; 
+        padding-right: 5%;
+    }
+
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 8px;
     }
 
     .hero-content p {
-        font-size: 1.1rem;
+        font-size: 0.75rem; 
+        margin-bottom: 20px;
+        display: block; 
+        line-height: 1.4;
     }
     
-    .btn-teklif {
-        display: none; /* Mobilde teklif butonu yer kaplamaması için menü içine alınabilir, şimdilik gizleyelim veya konumunu ayarlayalım */
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start; 
+        width: 100%;
+        gap: 8px; 
     }
+    
+    .hero-buttons a {
+        width: auto; 
+        padding: 10px 20px; 
+        font-size: 0.7rem; 
+        justify-content: center;
+    }
+
+    .slider-progress-container {
+        bottom: 20px;
+    }
+
+    /* Hizmetler, Ürünler ve Referanslar Mobil Ayarı */
+    .services-row .service-box,
+    .products-slider .card, 
+    .references-slider .card {
+        flex: 0 0 85%; 
+        min-width: 260px; 
+        scroll-snap-align: start;
+    } 
 }
