@@ -683,7 +683,12 @@ footer {
 
 /* --- REFERANSLAR SAYFASI (15'li Grid Yapısı) --- */
 .hero-referanslar {
-    background-image: url('assets/img/banner-2.jpg') !important; /* İkinci banner resmi */
+    background-image: url('assets/img/banner-2.jpg') !important; 
+    background-position: center bottom !important; /* Görselin tam alt kısmını merkeze alır */
+}
+
+.hero-urunler {
+    background-image: url('assets/img/banner-3.jpg') !important; 
 }
 
 .references-page-grid {
