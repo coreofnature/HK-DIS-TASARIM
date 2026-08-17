@@ -24,6 +24,7 @@ body {
     color: var(--text-color);
     background-color: var(--white);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -57,7 +58,7 @@ section {
     padding: 5rem 0;
 }
 
-/* Header & Menü */
+/* --- HEADER & MENÜ --- */
 header {
     background-color: transparent; 
     position: fixed;
@@ -69,7 +70,8 @@ header {
 }
 
 /* Sayfa kaydırıldığında VEYA mobil menü açıldığında devreye giren beyaz tasarım */
-header.header-scrolled {
+header.header-scrolled,
+header.mobile-menu-open {
     background-color: rgba(255, 255, 255, 0.95); 
     box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
     padding: 0; 
@@ -77,47 +79,60 @@ header.header-scrolled {
 
 .nav-container {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; /* Diğer menü elemanlarını ortalar */
-    height: 120px; /* Büyük logo için ana container yüksekliğini artırdık */
+    justify-content: flex-end; /* Logoyu özgürleştirdiğimiz için menüyü ve butonu sağa yaslarız */
+    gap: 30px; 
+    align-items: center; 
+    height: 120px; 
     transition: height 0.4s ease;
 }
 
 header.header-scrolled .nav-container,
 header.mobile-menu-open .nav-container {
-    height: 70px; /* Beyaz navbar'a geçince daralan orijinal yükseklik */
+    height: 70px; 
 }
 
-/* LOGO KONUMLANDIRMA (YENİ EKLENDİ) */
+/* --- LOGO TASARIMI VE KONUMU (REFACTOR EDİLDİ) --- */
 .logo {
-    align-self: flex-start; /* Sadece logoyu tavana doğru çeker */
-    margin-top: 15px; /* Tavandan hafif boşluk */
-    margin-left: -30px; /* Logoyu sola doğru normal hizasından daha dışarı çeker */
-    transition: all 0.4s ease; /* Kaydırırken yumuşak geçiş sağlar */
+    position: absolute;
+    left: 8%; /* Altındaki 'DIŞ MEKÂNLARA' yazısının padding-left: 8% değeriyle KUSURSUZ hizalanır */
+    top: 25px; /* Tavandan zarif bir boşluk */
+    transition: all 0.4s ease;
+    z-index: 1001; /* Her şeyin üstünde durması için */
 }
 
+/* Navbar beyazlayınca logo menüyle hizalanır */
 header.header-scrolled .logo,
 header.mobile-menu-open .logo {
-    align-self: center; /* Tekrar ortaya hizalanır */
-    margin-top: 0;
-    margin-left: 0;
+    top: 10px; /* 70px yüksekliğindeki beyaz menüde 50px'lik kare logoyu tam ortalar */
 }
 
-/* Dinamik Logo Boyut Ayarları */
-.nav-logo {
-    height: 140px; /* Eski 70px'in tam iki katı! Devasa ve şık. */
+/* 1. Başlangıçta Görünecek Geniş Logo (Büyütüldü) */
+.logo-default {
+    display: block;
+    width: 380px; 
+    height: auto;
+    filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.5)); 
+}
+
+/* 2. Kaydırıldığında Görünecek Kare Logo */
+.logo-scrolled {
+    display: none; 
+    height: 50px; 
     width: auto;
-    transition: all 0.4s ease;
-    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.4)); 
 }
 
-/* Sayfa kaydırıldığında logo küçülür */
-header.header-scrolled .nav-logo,
-header.mobile-menu-open .nav-logo {
-    height: 45px; /* Beyaz menüye geçince logo zarifçe küçülür */
-    filter: none; /* Beyaz zeminde gölgeye gerek yok */
+/* Scroll Tetiklendiğinde Logoları Değiştir */
+header.header-scrolled .logo-default,
+header.mobile-menu-open .logo-default {
+    display: none; 
 }
 
+header.header-scrolled .logo-scrolled,
+header.mobile-menu-open .logo-scrolled {
+    display: block; 
+}
+
+/* --- MENÜ ELEMANLARI --- */
 nav ul {
     list-style: none;
     display: flex;
@@ -133,7 +148,8 @@ nav ul li a {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); 
 }
 
-header.header-scrolled nav ul li a {
+header.header-scrolled nav ul li a,
+header.mobile-menu-open nav ul li a {
     text-shadow: none;
 }
 
@@ -154,7 +170,8 @@ nav ul li a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
 }
 
-header.header-scrolled .btn-teklif {
+header.header-scrolled .btn-teklif,
+header.mobile-menu-open .btn-teklif {
     text-shadow: none;
     box-shadow: none;
 }
@@ -173,11 +190,12 @@ header.header-scrolled .btn-teklif {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-header.header-scrolled .hamburger {
+header.header-scrolled .hamburger,
+header.mobile-menu-open .hamburger {
     text-shadow: none;
 }
 
-/* Hero Section (Geçişli Arka Plan) */
+/* --- HERO SECTION (Ana Banner) --- */
 #hero {
     height: 100vh;
     display: flex;
@@ -190,7 +208,6 @@ header.header-scrolled .hamburger {
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    /* Eski 0.65'leri 0.75'e, 0.1'i ise 0.2'ye çıkararak tatlı bir orta yol bulduk */
     background: linear-gradient(to right, rgba(28, 35, 39, 0.75) 0%, rgba(28, 35, 39, 0.2) 60%),
                 linear-gradient(to top, rgba(28, 35, 39, 0.65) 0%, transparent 40%);
     z-index: 1;
@@ -302,7 +319,6 @@ header.header-scrolled .hamburger {
     background-color: var(--white);
 }
 
-/* --- HİZMETLER (Masaüstü ve Mobil Kaydırmalı Yapı) --- */
 /* --- YAN YANA BÖLÜM TASARIMI (Split Layout) --- */
 .split-layout {
     display: flex;
@@ -311,12 +327,12 @@ header.header-scrolled .hamburger {
 }
 
 .split-left {
-    flex: 0 0 28%; /* Sol taraf ekranın %28'ini kaplar */
+    flex: 0 0 28%; 
     min-width: 250px;
 }
 
 .split-right {
-    flex: 1; /* Sağ taraf kalan alanı doldurur */
+    flex: 1; 
     min-width: 0; /* Flexbox içinde slider taşmasını önler */
 }
 
@@ -361,41 +377,7 @@ header.header-scrolled .hamburger {
     transform: translateY(-2px);
 }
 
-/* --- YENİ: Neden HK Dış Tasarım? --- */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.feature-box {
-    background-color: var(--white);
-    padding: 35px 20px;
-    text-align: center;
-    border-radius: 8px;
-    border: 1px solid #eaeaea;
-    transition: all 0.4s ease;
-}
-
-.feature-box:hover {
-    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-    border-color: var(--accent-color);
-    transform: translateY(-5px);
-}
-
-.feature-box h3 {
-    color: var(--primary-color);
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-}
-
-.feature-box p {
-    color: #666;
-    font-size: 0.85rem;
-    line-height: 1.6;
-}
-
+/* --- HİZMETLER (Kaydırmalı Kartlar) --- */
 .services-row {
     display: flex;
     overflow-x: auto;
@@ -421,8 +403,8 @@ header.header-scrolled .hamburger {
 }
 
 .service-box {
-    flex: 0 0 calc(16.666% - 17px); /* Masaüstünde 6'sı birden sığar */
-    min-width: 220px; /* Ekran daralırsa kutular ezilmesin, kaydırmaya geçsin */
+    flex: 0 0 calc(16.666% - 17px); 
+    min-width: 220px; 
     scroll-snap-align: start;
     text-align: center;
     padding: 30px 15px;
@@ -527,11 +509,10 @@ header.header-scrolled .hamburger {
     color: #666;
 }
 
-/* Hakkımızda */
 /* --- Nasıl Çalışıyoruz? (Süreç Adımları) --- */
 .process-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Masaüstünde yan yana 4 kutu */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 30px;
     margin-top: 10px;
 }
@@ -544,7 +525,7 @@ header.header-scrolled .hamburger {
     border: 1px solid #eaeaea;
     position: relative;
     transition: all 0.4s ease;
-    overflow: hidden; /* Dışarı taşan dev numaraları gizler */
+    overflow: hidden; 
 }
 
 .process-step-box:hover {
@@ -556,19 +537,19 @@ header.header-scrolled .hamburger {
 /* Arka plandaki şık filigran sayı tasarımı */
 .step-number {
     position: absolute;
-    top: -25px; /* Tavandan içeri aldık */
-    right: 15px; /* Sağ sınırdan içeri çektik, kesilme düzelecek */
+    top: -25px; 
+    right: 15px; 
     font-family: 'Playfair Display', serif;
     font-size: 6rem;
     font-weight: 700;
-    color: rgba(191, 161, 129, 0.12); /* Başlangıçtaki solukluğu da çok azıcık artırdık */
+    color: rgba(191, 161, 129, 0.12); 
     z-index: 0;
     transition: color 0.4s ease, transform 0.4s ease;
 }
 
 .process-step-box:hover .step-number {
-    color: rgba(191, 161, 129, 0.5); /* Üzerine gelindiğinde bej rengi %50 doygunluğa ulaşarak çok net patlayacak */
-    transform: scale(1.05); /* Üzerine gelince rakam çok hafif büyüyerek daha şık bir hissiyat verecek */
+    color: rgba(191, 161, 129, 0.5); 
+    transform: scale(1.05); 
 }
 
 /* Ön plandaki ikonlar ve yazılar */
@@ -577,7 +558,7 @@ header.header-scrolled .hamburger {
     color: var(--accent-color);
     margin-bottom: 20px;
     position: relative;
-    z-index: 1; /* Numaraların üstünde durması için */
+    z-index: 1; 
 }
 
 .process-step-box h3 {
@@ -594,6 +575,41 @@ header.header-scrolled .hamburger {
     line-height: 1.6;
     position: relative;
     z-index: 1;
+}
+
+/* --- Neden HK Dış Tasarım? --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.feature-box {
+    background-color: var(--white);
+    padding: 35px 20px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    transition: all 0.4s ease;
+}
+
+.feature-box:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.feature-box h3 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.feature-box p {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.6;
 }
 
 /* İletişim */
@@ -644,9 +660,47 @@ footer {
     }
 }
 
-/* --- Mobil Uyum (Responsive) --- */
+/* ==================================================== */
+/* --- MOBİL UYUM (RESPONSIVE) VE LOGO ORTALAMA --- */
+/* ==================================================== */
 @media (max-width: 900px) {
     
+    .nav-container {
+        height: 80px; 
+        position: relative; /* Menü açılırken referans alması için eklendi */
+    }
+
+    /* Logo Mobilde TAM ORTADA */
+    .logo {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20px; 
+    }
+
+    /* Beyaz menüye geçince mobildeki dikey ortalama ayarı */
+    header.header-scrolled .logo,
+    header.mobile-menu-open .logo {
+        top: 15px; 
+    }
+
+    /* Mobilde Logo Boyutu */
+    .logo-default {
+        width: 240px; 
+    }
+    
+    header.header-scrolled .logo-scrolled,
+    header.mobile-menu-open .logo-scrolled {
+        height: 40px; 
+    }
+
+    /* Hamburger menüyü en sağa atar */
+    .hamburger {
+        display: block;
+        margin-left: auto;
+    }
+
+    /* --- İŞTE SİLİNEN VE SORUN YARATAN KISIM BURASI --- */
+    /* Masaüstü menüsünü mobilde gizleyip açılır menüye çeviren kodlar */
     nav ul {
         display: none;
         flex-direction: column;
@@ -671,30 +725,13 @@ footer {
         padding: 10px 0;
         display: block;
     }
-
-    /* Mobilde Dinamik Logo Ayarı */
-    .logo {
-        margin-left: -15px; /* Mobilde de biraz sola çekiyoruz */
-    }
-
-    /* Mobilde Dinamik Logo Ayarı */
-    .nav-logo {
-        height: 100px; /* Mobilde de eski 55px'in neredeyse iki katı */
-    }
     
-    header.header-scrolled .nav-logo,
-    header.mobile-menu-open .nav-logo {
-        height: 40px; /* Beyaz menüde sorunsuz haline geri döner */
-    }
-    
-    .hamburger {
-        display: block;
-    }
-
     .btn-teklif {
-        display: none; 
+        display: none; /* Masaüstü Teklif Al butonunu mobilde gizle */
     }
-
+    /* ---------------------------------------------------- */
+    
+    /* Hero Banner */
     #hero {
         align-items: flex-end; 
         justify-content: flex-start; 
@@ -702,7 +739,6 @@ footer {
     }
     
     .hero-overlay {
-        /* Mobilde de aynı şekilde 0.75 ve 0.2 dengesini kurduk */
         background: linear-gradient(to right, rgba(28, 35, 39, 0.75) 0%, rgba(28, 35, 39, 0.2) 80%),
                     linear-gradient(to top, rgba(28, 35, 39, 0.7) 0%, transparent 50%);
     }
@@ -712,11 +748,6 @@ footer {
         margin: 0; 
         padding-left: 6%; 
         padding-right: 5%;
-    }
-
-    .hero-logo {
-        width: 140px; /* Mobilde logonun boyutu daha küçük ve kibar olacak */
-        margin-bottom: 15px;
     }
 
     .hero-content h1 {
@@ -749,7 +780,25 @@ footer {
         bottom: 20px;
     }
 
-    /* Hizmetler, Ürünler ve Referanslar Mobil Ayarı */
+    /* Split Layout Mobil Ayarları */
+    .split-layout {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%; 
+    }
+    
+    .split-left {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .split-right {
+        width: 100%; 
+        max-width: 100vw;
+    }
+
+    /* Hizmetler, Ürünler ve Referanslar Mobil Kart Ayarı */
     .services-row .service-box,
     .products-slider .card, 
     .references-slider .card {
@@ -760,24 +809,12 @@ footer {
 
     /* Nasıl Çalışıyoruz Mobil Ayarı */
     .process-grid {
-        grid-template-columns: 1fr; /* Mobilde alt alta tek sütun olur */
+        grid-template-columns: 1fr; 
         gap: 20px;
-    }
-
-    /* Split Layout ve Yeni Bölümler Mobil Ayarı */
-    .split-layout {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-    }
-    
-    .split-left {
-        width: 100%;
-        margin-bottom: 10px;
     }
 
     .features-grid {
-        grid-template-columns: 1fr; /* Mobilde alt alta tek sütun */
+        grid-template-columns: 1fr; 
         gap: 20px;
     }
 }
