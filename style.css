@@ -681,6 +681,118 @@ footer {
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
+/* --- REFERANSLAR SAYFASI (15'li Grid Yapısı) --- */
+.hero-referanslar {
+    background-image: url('assets/img/banner-2.jpg') !important; /* İkinci banner resmi */
+}
+
+.references-page-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Masaüstünde 3 kart yan yana */
+    gap: 30px;
+}
+
+.ref-page-card {
+    background: var(--white); 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.ref-page-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.ref-page-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    cursor: zoom-in; /* İmleç büyüteç şeklini alır */
+    transition: opacity 0.3s ease;
+}
+
+.ref-page-card img:hover {
+    opacity: 0.85; /* Üzerine gelince resim hafif kararır, tıklanabilir olduğu hissedilir */
+}
+
+.ref-card-content {
+    padding: 20px;
+    text-align: left;
+}
+
+.ref-card-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.15rem;
+}
+
+.ref-card-content p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* --- LIGHTBOX (Büyüyen Resim) EFEKTİ --- */
+.lightbox-modal {
+    display: none; /* Başlangıçta gizlidir */
+    position: fixed;
+    z-index: 9999; /* En üst katmanda durur */
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Arka planı koyulaştırır */
+    backdrop-filter: blur(5px); /* Arka plana şık bir fluluk (blur) katar */
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 1000px; /* Büyüyen resmin maksimum genişliği */
+    max-height: 80vh; /* Ekrana sığması için */
+    object-fit: contain;
+    border-radius: 4px;
+    animation: zoomIn 0.4s ease; /* Pürüzsüz açılma animasyonu */
+}
+
+#lightbox-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    text-align: center;
+    color: var(--accent-color); /* Altındaki yazı bej renginde olacak */
+    padding: 15px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    animation: zoomIn 0.4s ease;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #f1f1f1;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.lightbox-close:hover {
+    color: var(--accent-color);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
 /* ==================================================== */
 /* --- MOBİL UYUM (RESPONSIVE) VE LOGO ORTALAMA --- */
 /* ==================================================== */
@@ -843,5 +955,17 @@ footer {
     #inner-hero {
         height: 35vh;
         padding-bottom: 30px;
+    }
+
+    /* Referanslar Sayfası Grid Mobil Ayarı */
+    .references-page-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tablette yan yana 2 tane */
+        gap: 20px;
+    }
+    
+    @media (max-width: 600px) {
+        .references-page-grid {
+            grid-template-columns: 1fr; /* Telefonda alt alta 1 tane */
+        }
     }
 }

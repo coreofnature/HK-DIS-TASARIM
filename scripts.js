@@ -162,4 +162,44 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+    // --- 4. Lightbox (Referans Görsellerini Büyütme) İşlemleri ---
+    const modal = document.getElementById("lightbox-modal");
+    const modalImg = document.getElementById("lightbox-img");
+    const captionText = document.getElementById("lightbox-caption");
+    const closeBtn = document.querySelector(".lightbox-close");
+    const triggers = document.querySelectorAll(".lightbox-trigger");
+
+    if (modal && modalImg && closeBtn) {
+        triggers.forEach(img => {
+            img.addEventListener("click", function() {
+                modal.style.display = "block";
+                modalImg.src = this.src; // Tıklanan resmin adresini büyük ekrana aktar
+                
+                // Resmin hemen altındaki başlığı (h3) alıp büyüyen resmin altına yazdır
+                const cardContent = this.nextElementSibling;
+                if(cardContent) {
+                    const title = cardContent.querySelector('h3').innerText;
+                    captionText.innerHTML = title;
+                }
+                
+                // Arka planın kaymasını engelle
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        // X butonuna basınca kapat
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // Kaydırmayı geri aç
+        });
+
+        // Resmin dışındaki karanlık alana tıklayınca da kapat
+        modal.addEventListener("click", function(e) {
+            if (e.target !== modalImg) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        });
+    }
 });
