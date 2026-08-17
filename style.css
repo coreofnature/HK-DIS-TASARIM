@@ -190,8 +190,9 @@ header.header-scrolled .hamburger {
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to right, rgba(28, 35, 39, 0.65) 0%, rgba(28, 35, 39, 0.1) 60%),
-                linear-gradient(to top, rgba(28, 35, 39, 0.5) 0%, transparent 40%);
+    /* Eski 0.65'leri 0.75'e, 0.1'i ise 0.2'ye çıkararak tatlı bir orta yol bulduk */
+    background: linear-gradient(to right, rgba(28, 35, 39, 0.75) 0%, rgba(28, 35, 39, 0.2) 60%),
+                linear-gradient(to top, rgba(28, 35, 39, 0.65) 0%, transparent 40%);
     z-index: 1;
 }
 
@@ -302,6 +303,99 @@ header.header-scrolled .hamburger {
 }
 
 /* --- HİZMETLER (Masaüstü ve Mobil Kaydırmalı Yapı) --- */
+/* --- YAN YANA BÖLÜM TASARIMI (Split Layout) --- */
+.split-layout {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.split-left {
+    flex: 0 0 28%; /* Sol taraf ekranın %28'ini kaplar */
+    min-width: 250px;
+}
+
+.split-right {
+    flex: 1; /* Sağ taraf kalan alanı doldurur */
+    min-width: 0; /* Flexbox içinde slider taşmasını önler */
+}
+
+.section-subtitle {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.split-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.split-left p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.btn-outline-solid {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-solid:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* --- YENİ: Neden HK Dış Tasarım? --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.feature-box {
+    background-color: var(--white);
+    padding: 35px 20px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    transition: all 0.4s ease;
+}
+
+.feature-box:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.feature-box h3 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.feature-box p {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
 .services-row {
     display: flex;
     overflow-x: auto;
@@ -601,16 +695,16 @@ footer {
         display: none; 
     }
 
-#hero {
+    #hero {
         align-items: flex-end; 
         justify-content: flex-start; 
         padding-bottom: 230px;
     }
     
-.hero-overlay {
-        /* 0.9 olan koyulukları 0.6'ya, 0.4 olanı ise 0.1'e çektik. Sis oldukça hafifledi. */
-        background: linear-gradient(to right, rgba(28, 35, 39, 0.6) 0%, rgba(28, 35, 39, 0.1) 80%),
-                    linear-gradient(to top, rgba(28, 35, 39, 0.6) 0%, transparent 50%);
+    .hero-overlay {
+        /* Mobilde de aynı şekilde 0.75 ve 0.2 dengesini kurduk */
+        background: linear-gradient(to right, rgba(28, 35, 39, 0.75) 0%, rgba(28, 35, 39, 0.2) 80%),
+                    linear-gradient(to top, rgba(28, 35, 39, 0.7) 0%, transparent 50%);
     }
 
     .hero-content {
@@ -667,6 +761,23 @@ footer {
     /* Nasıl Çalışıyoruz Mobil Ayarı */
     .process-grid {
         grid-template-columns: 1fr; /* Mobilde alt alta tek sütun olur */
+        gap: 20px;
+    }
+
+    /* Split Layout ve Yeni Bölümler Mobil Ayarı */
+    .split-layout {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .split-left {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Mobilde alt alta tek sütun */
         gap: 20px;
     }
 }
