@@ -660,6 +660,27 @@ footer {
     }
 }
 
+/* --- ALT SAYFALAR İÇİN MİNİ-HERO --- */
+#inner-hero {
+    height: 45vh; /* Ana sayfadaki 100vh yerine daha kısa, şık bir tepe banner'ı */
+    display: flex;
+    align-items: flex-end; 
+    justify-content: flex-start; 
+    position: relative;
+    padding-bottom: 8vh; 
+    background-image: url('assets/img/banner-1.jpg'); /* Arka plana şık bir manzara resmi */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Biz Kimiz Sayfası Görseli */
+.about-page-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
 /* ==================================================== */
 /* --- MOBİL UYUM (RESPONSIVE) VE LOGO ORTALAMA --- */
 /* ==================================================== */
@@ -816,5 +837,11 @@ footer {
     .features-grid {
         grid-template-columns: 1fr; 
         gap: 20px;
+    }
+
+    /* Alt Sayfa Mini Hero Mobil Ayarı */
+    #inner-hero {
+        height: 35vh;
+        padding-bottom: 30px;
     }
 }
