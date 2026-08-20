@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="assets/img/logo/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Referans İşlerimiz | HK Dış Tasarım</title>
@@ -17,15 +17,15 @@
         <div class="container nav-container">
             
             <a href="index.html" class="logo">
-                <img src="assets/img/logo-big-dark.png" alt="HK Dış Tasarım" class="nav-logo logo-default">
-                <img src="assets/img/logo-dark.png" alt="HK Dış Tasarım İkon" class="nav-logo logo-scrolled">
+                <img src="assets/img/logo/logo-big-dark.png" alt="HK Dış Tasarım" class="nav-logo logo-default">
+                <img src="assets/img/logo/logo-dark.png" alt="HK Dış Tasarım İkon" class="nav-logo logo-scrolled">
             </a>
 
             <nav>
                 <ul class="nav-menu">
 
                     <li><a href="index.html#hero">Ana Sayfa</a></li>
-                    <li><a href="#hizmetler">Hizmetler</a></li>
+                    <li><a href="index.html#hizmetler">Hizmetler</a></li>
                     <li><a href="urunler.html">Ürünler</a></li>
                     <li><a href="referanslar.html" style="color: var(--accent-color); text-shadow: none;">Referanslar</a></li>
                     <li><a href="biz-kimiz.html">Biz Kimiz?</a></li>
@@ -49,145 +49,224 @@
         </div>
     </section>
 
-    <!-- Referanslar Grid Yapısı (15 Kart) -->
+    <!-- Referanslar Grid -->
     <section id="referanslar-sayfasi" class="section-bg">
         <div class="container">
             <h2 class="section-title">Tamamladığımız Projeler</h2>
             
+            <p class="section-description">
+                <i class="fas fa-search-plus"></i> Proje detaylarını (uygulama, konum, ürün ve yıl) görmek için görsellerin üzerine tıklayabilirsiniz.
+            </p>
+
             <div class="references-page-grid">
                 
                 <!-- KART 1 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans1.jpg" alt="Referans 1" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans1.jpg" alt="Referans 1" class="lightbox-trigger"
+                        data-uygulama="Taş Duvar & Bahçe Düzenlemesi"
+                        data-konum="Bursa / İznik / Kutluca"
+                        data-urunler="10x20 Prizma Gri Taş"
+                        data-yil="2026">
+                         
                     <div class="ref-card-content">
-                        <h3>Yalova Merkez Peyzaj</h3>
-                        <p>Kilit parke ve yeşil alan çevre düzenlemesi.</p>
+                        <h3>Kutluca Özel Mülk</h3>
+                        <p>Taş Duvar & Bahçe Düzenlemesi</p>
                     </div>
                 </div>
 
                 <!-- KART 2 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans2.jpg" alt="Referans 2" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans2.jpg" alt="Referans 2" class="lightbox-trigger"
+                        data-uygulama="Taş Duvar & Bahçe Düzenlemesi"
+                        data-konum="Bursa / İznik / Kutluca"
+                        data-urunler="10x20 Prizma Gri Taş"
+                        data-yil="2026">
+                        
                     <div class="ref-card-content">
-                        <h3>Çınarcık Villaları</h3>
-                        <p>Doğal taş duvar ve yürüme yolu uygulaması.</p>
+                        <h3>Kutluca Özel Mülk</h3>
+                        <p>Taş Duvar & Bahçe Düzenlemesi</p>
                     </div>
                 </div>
 
                 <!-- KART 3 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans3.jpg" alt="Referans 3" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans3.jpg" alt="Referans 3" class="lightbox-trigger"
+                        data-uygulama="Taş Duvar Derz Uygulaması"
+                        data-konum="Bursa / İznik / Kutluca"
+                        data-urunler="Derz"
+                        data-yil="2026">
+
                     <div class="ref-card-content">
-                        <h3>Altınova Site İçi</h3>
-                        <p>Otopark çim taşı döşemesi ve peyzaj.</p>
+                        <h3>Kutluca Özel Mülk</h3>
+                        <p>Taş Duvar & Bahçe Düzenlemesi</p>
                     </div>
                 </div>
 
                 <!-- KART 4 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans4.jpg" alt="Referans 4" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans4.jpg" alt="Referans 4" class="lightbox-trigger"
+                        data-uygulama="Zemin Düzenlemesi"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="20x20 Karo Beyaz - 20x20 Karo Siyah"
+                        data-yil="2025">
+
                     <div class="ref-card-content">
-                        <h3>Armutlu Sahil Yolu</h3>
-                        <p>Dekoratif yürüyüş yolu ve bordür çalışması.</p>
+                        <h3>Orhangazi Özel Mülk</h3>
+                        <p>Villa Ön Bahçe Uygulaması</p>
                     </div>
                 </div>
 
                 <!-- KART 5 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans5.jpg" alt="Referans 5" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans5.jpg" alt="Referans 5" class="lightbox-trigger"
+                        data-uygulama="Zemin Düzenlemesi"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="20x20 Karo Beyaz - 20x20 Karo Siyah"
+                        data-yil="2025">
+
                     <div class="ref-card-content">
-                        <h3>Termal Özel Mülk</h3>
-                        <p>Zemin hazırlığı ve istinat duvarı uygulaması.</p>
+                        <h3>Orhangazi Özel Mülk</h3>
+                        <p>Villa Çevre Düzenlemesi</p>
                     </div>
                 </div>
 
                 <!-- KART 6 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans6.jpg" alt="Referans 6" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans6.jpg" alt="Referans 6" class="lightbox-trigger"
+                        data-uygulama="Zemin Düzenlemesi"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="10x20 Prizma Gri - 10x20 Prizma Beyaz - 20x50 Bahçe Bordür"
+                        data-yil="2025">
+
                     <div class="ref-card-content">
-                        <h3>Çiftlikköy Bahçe</h3>
-                        <p>Modern dış mekân bitkilendirme ve peyzaj.</p>
+                        <h3>Orhangazi Özel Mülk</h3>
+                        <p>Villa Dış Mekan Uygulaması</p>
                     </div>
                 </div>
 
                 <!-- KART 7 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans7.jpg" alt="Referans 7" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans7.jpg" alt="Referans 7" class="lightbox-trigger"
+                        data-uygulama="Zemin Düzenlemesi"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="10x20 Prizma Gri - 10x20 Prizma Beyaz - 20x50 Bahçe Bordür"
+                        data-yil="2025">
+
                     <div class="ref-card-content">
-                        <h3>Gemlik Fabrika Alanı</h3>
-                        <p>Ağır vasıta uyumlu endüstriyel parke döşeme.</p>
+                        <h3>Orhangazi Özel Mülk</h3>
+                        <p>Villa Dış Mekan Uygulaması</p>
                     </div>
                 </div>
 
                 <!-- KART 8 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans8.jpg" alt="Referans 8" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans8.jpg" alt="Referans 8" class="lightbox-trigger"
+                        data-uygulama="Zemin Düzenlemesi"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="20x20 Kırmızı Karo - 20x20 Gri Karo - 22x75 Kırmızı Bordür"
+                        data-yil="2025">
+
                     <div class="ref-card-content">
-                        <h3>Orhangazi Meydanı</h3>
-                        <p>Kamu alanı çevre düzenleme ve oluk taşı.</p>
+                        <h3>Orhangazi Özel Mülk</h3>
+                        <p>Bağ Evi Dış Mekan Uygulaması</p>
                     </div>
                 </div>
 
                 <!-- KART 9 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans9.jpg" alt="Referans 9" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans9.jpg" alt="Referans 9" class="lightbox-trigger"
+                        data-uygulama="Zemin Düzenlemesi"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="20x20 Kırmızı Karo - 20x20 Gri Karo - 22x75 Kırmızı Bordür"
+                        data-yil="2025">
+
                     <div class="ref-card-content">
-                        <h3>İznik Göl Kenarı</h3>
-                        <p>Dinlenme tesisleri zemin ve peyzaj işleri.</p>
+                        <h3>Orhangazi Özel Mülk</h3>
+                        <p>Bağ Evi Dış Mekan Uygulaması</p>
                     </div>
                 </div>
 
                 <!-- KART 10 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans10.jpg" alt="Referans 10" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans10.jpg" alt="Referans 10" class="lightbox-trigger"
+                        data-uygulama="Zemin Tasviyesi & Parke Taşı Uygulaması"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="8 cm Kilit Gri Parke Taşı"
+                        data-yil="2025">
+
                     <div class="ref-card-content">
-                        <h3>Mudanya Müstakil Ev</h3>
-                        <p>Bahçe içi doğal taş ve bordür ayrımı.</p>
+                        <h3>Orhangazi</h3>
+                        <p>Zemin Tasviyesi & Parke Taşı Uygulaması</p>
                     </div>
                 </div>
 
                 <!-- KART 11 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans11.jpg" alt="Referans 11" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans11.jpg" alt="Referans 11" class="lightbox-trigger"
+                        data-uygulama="Parke Taşı Uygulaması"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="8 cm Kilit Kırmızı Parke Taşı - Bordür Taşı"
+                        data-yil="2026">
+
                     <div class="ref-card-content">
-                        <h3>Nilüfer Tesis Önü</h3>
-                        <p>Zemin tesviye ve kilit parke uygulaması.</p>
+                        <h3>Orhangazi Özel Mülk</h3>
+                        <p>Bağ Evi Proje Büyütme Çalışması</p>
                     </div>
                 </div>
 
                 <!-- KART 12 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans12.jpg" alt="Referans 12" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans12.jpg" alt="Referans 12" class="lightbox-trigger"
+                        data-uygulama="Parke Taşı Uygulaması"
+                        data-konum="Yalova"
+                        data-urunler="8 cm Kilit Gri Parke Taşı"
+                        data-yil="2026">
+
                     <div class="ref-card-content">
-                        <h3>Osmangazi Parkı</h3>
-                        <p>Belediye yeşil alan projesi malzeme temini.</p>
+                        <h3>Yalova Özel Mülk</h3>
+                        <p>Villa Girişi Parke Taşı Uygulaması</p>
                     </div>
                 </div>
 
                 <!-- KART 13 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans13.jpg" alt="Referans 13" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans13.jpg" alt="Referans 13" class="lightbox-trigger"
+                        data-uygulama="Zemin Uygulaması"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="20x20 Siyah Karo - 10x10 Beyaz Karo"
+                        data-yil="2025">
+                        
                     <div class="ref-card-content">
-                        <h3>Kestel Site Girişi</h3>
-                        <p>Özel otopark çim taşı ve dekoratif alan.</p>
+                        <h3>Orhangazi Apartman</h3>
+                        <p>Apartman Girişi Zemin Uygulaması</p>
                     </div>
                 </div>
 
                 <!-- KART 14 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans14.jpg" alt="Referans 14" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans14.jpg" alt="Referans 14" class="lightbox-trigger"
+                        data-uygulama="Otopark Alanı"
+                        data-konum="Bursa / Orhangazi"
+                        data-urunler="8 cm Kilit Gri Parke Taşı"
+                        data-yil="2026">
+
                     <div class="ref-card-content">
-                        <h3>Gürsu Sanayi Bölgesi</h3>
-                        <p>Altyapı, su yönlendirme ve oluk sistemleri.</p>
+                        <h3>Orhangazi</h3>
+                        <p>Köy Yolu Otopark Alanı</p>
                     </div>
                 </div>
 
                 <!-- KART 15 -->
                 <div class="ref-page-card">
-                    <img src="assets/img/referans15.jpg" alt="Referans 15" class="lightbox-trigger">
+                    <img src="assets/img/ref/referans15.jpg" alt="Referans 15" class="lightbox-trigger"
+                        data-uygulama="Parke Taşı Uygulaması"
+                        data-konum="Yalova / Merkez"
+                        data-urunler="8 cm Kilit Kırmızı Parke Taşı, Bordür Taşı"
+                        data-yil="2025">
+
                     <div class="ref-card-content">
-                        <h3>Karamürsel Sahil</h3>
-                        <p>Deniz kenarı yürüyüş yolu taş kaplaması.</p>
+                        <h3>Orhangazi Özel Mülk</h3>
+                        <p>Bağ Evi Dış Mekan Uygulaması</p>
                     </div>
                 </div>
 
@@ -210,7 +289,7 @@
                 <div class="contact-item">
                     <i class="fas fa-phone-alt"></i>
                     <h3>Telefon</h3>
-                    <p><a href="tel:+905550000000">+90 555 000 00 00</a></p>
+                    <p><a href="tel:+905333637761">+90 533 363 77 61</a></p>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>

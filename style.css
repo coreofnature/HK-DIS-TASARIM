@@ -668,27 +668,54 @@ footer {
     justify-content: flex-start; 
     position: relative;
     padding-bottom: 8vh; 
-    background-image: url('assets/img/banner-1.jpg'); /* Arka plana şık bir manzara resmi */
+    background-image: url('assets/img/banner/banner-1.jpg'); /* Arka plana şık bir manzara resmi */
     background-size: cover;
     background-position: center;
 }
 
-/* Biz Kimiz Sayfası Görseli */
-.about-page-img {
+/* --- BİZ KİMİZ SAYFASI - Görsel Ayarları --- */
+.about-image-gallery {
+    width: 100%;
+}
+
+/* Masaüstünde yatay görsel görünür, %100 alanı kaplar */
+.about-img-horizontal {
     width: 100%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    display: block; 
+}
+
+/* Masaüstünde dikey görsel tamamen gizlenir */
+.about-img-vertical {
+    display: none; 
 }
 
 /* --- REFERANSLAR SAYFASI (15'li Grid Yapısı) --- */
 .hero-referanslar {
-    background-image: url('assets/img/banner-2.jpg') !important; 
+    background-image: url('assets/img/banner/banner-2.jpg') !important; 
     background-position: center bottom !important; /* Görselin tam alt kısmını merkeze alır */
 }
 
 .hero-urunler {
-    background-image: url('assets/img/banner-3.jpg') !important; 
+    background-image: url('assets/img/banner/banner-3.jpg') !important; 
+}
+
+/* --- BÖLÜM AÇIKLAMALARI (Yönlendirme Metni) --- */
+.section-description {
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin: -15px auto 40px auto; /* Başlığa yaklaştırıp, altındaki grid'den biraz uzaklaştırdık */
+    line-height: 1.6;
+}
+
+.section-description i {
+    color: var(--accent-color); /* İkon senin şık bej renginde yanacak */
+    margin-right: 5px;
+    font-size: 1.1rem;
 }
 
 .references-page-grid {
@@ -764,18 +791,42 @@ footer {
     animation: zoomIn 0.4s ease; /* Pürüzsüz açılma animasyonu */
 }
 
+/* Alt taraftaki dinamik 4'lü alanın ana taşıyıcısı */
 #lightbox-caption {
-    margin: auto;
+    margin: 15px auto 0 auto;
     display: block;
-    width: 80%;
-    max-width: 900px;
-    text-align: center;
-    color: var(--accent-color); /* Altındaki yazı bej renginde olacak */
-    padding: 15px 0;
-    font-size: 1.3rem;
-    font-weight: 600;
-    font-family: 'Playfair Display', serif;
+    width: 90%;
+    max-width: 1000px; /* Resmin genişliğiyle aynı hizada durur */
     animation: zoomIn 0.4s ease;
+}
+
+/* 4 Sütunlu Grid Yapısı */
+.lightbox-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Yan yana 4 eşit sütun */
+    gap: 20px;
+    background: rgba(28, 35, 39, 0.7); /* Okunabilirliği artırmak için çok hafif antrasit bir zemin */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(191, 161, 129, 0.2); /* Etrafında çok ince, saydam bir bej çerçeve */
+}
+
+/* Kalın ve Bej Rengindeki Başlıklar */
+.detail-item h4 {
+    color: var(--accent-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+/* İnce, Sade ve Beyaz Açıklama Yazıları */
+.detail-item p {
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; /* İnce font */
+    font-size: 0.95rem;
+    line-height: 1.4;
 }
 
 .lightbox-close {
@@ -972,5 +1023,25 @@ footer {
         .references-page-grid {
             grid-template-columns: 1fr; /* Telefonda alt alta 1 tane */
         }
+    }
+
+    /* Mobilde Lightbox Detayları (2x2 Grid) */
+    .lightbox-details {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+        padding: 15px;
+    }
+
+/* Biz Kimiz Görsel Mobil Ayarı */
+    .about-img-horizontal {
+        display: none !important; /* Mobilde yatay görseli gizle */
+    }
+    
+    .about-img-vertical {
+        display: block !important; /* Mobilde dikey görseli göster */
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     }
 }

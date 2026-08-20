@@ -52,15 +52,15 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Masaüstü ve Mobil için banner listeleri
     const desktopImages = [
-        'assets/img/banner-1.jpg', 
-        'assets/img/banner-2.jpg',
-        'assets/img/banner-3.jpg'
+        'assets/img/banner/banner-1.jpg', 
+        'assets/img/banner/banner-2.jpg',
+        'assets/img/banner/banner-3.jpg'
     ];
 
     const mobileImages = [
-        'assets/img/banner-mobil-1.jpg',
-        'assets/img/banner-mobil-2.jpg',
-        'assets/img/banner-mobil-3.jpg'
+        'assets/img/banner-mobile/banner-mobil-1.jpg',
+        'assets/img/banner-mobile/banner-mobil-2.jpg',
+        'assets/img/banner-mobile/banner-mobil-3.jpg'
     ];
 
     let isMobile = window.innerWidth <= 768;
@@ -170,18 +170,51 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeBtn = document.querySelector(".lightbox-close");
     const triggers = document.querySelectorAll(".lightbox-trigger");
 
-    if (modal && modalImg && closeBtn) {
+if (modal && modalImg && closeBtn) {
         triggers.forEach(img => {
             img.addEventListener("click", function() {
                 modal.style.display = "block";
-                modalImg.src = this.src; // Tıklanan resmin adresini büyük ekrana aktar
+                modalImg.src = this.src; 
                 
-                // Resmin hemen altındaki başlığı (h3) alıp büyüyen resmin altına yazdır
-                const cardContent = this.nextElementSibling;
-                if(cardContent) {
-                    const title = cardContent.querySelector('h3').innerText;
-                    captionText.innerHTML = title;
+                // İlk 3 veriyi standart çekiyoruz
+                const uygulama = this.getAttribute("data-uygulama") || "Belirtilmedi";
+                const konum = this.getAttribute("data-konum") || "Belirtilmedi";
+                const urunler = this.getAttribute("data-urunler") || "Belirtilmedi";
+                
+                // 4. Başlığın (Yıl veya Özellik) dinamik olarak belirlenmesi
+                const yil = this.getAttribute("data-yil");
+                const ozellik = this.getAttribute("data-ozellik");
+                
+                let dorduncuBaslik = "Yıl"; // Varsayılan başlık
+                let dorduncuDeger = yil || "Belirtilmedi";
+                
+                // Eğer HTML'de data-ozellik kullanılmışsa başlığı "Özellik" yap
+                if (ozellik) {
+                    dorduncuBaslik = "Özellik";
+                    dorduncuDeger = ozellik;
                 }
+                
+                // 4'lü dinamik detay alanını HTML olarak içeriye basıyoruz
+                captionText.innerHTML = `
+                    <div class="lightbox-details">
+                        <div class="detail-item">
+                            <h4>Uygulama</h4>
+                            <p>${uygulama}</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4>Konum</h4>
+                            <p>${konum}</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4>Ürünler</h4>
+                            <p>${urunler}</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4>${dorduncuBaslik}</h4>
+                            <p>${dorduncuDeger}</p>
+                        </div>
+                    </div>
+                `;
                 
                 // Arka planın kaymasını engelle
                 document.body.style.overflow = "hidden";
@@ -191,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // X butonuna basınca kapat
         closeBtn.addEventListener("click", function() {
             modal.style.display = "none";
-            document.body.style.overflow = "auto"; // Kaydırmayı geri aç
+            document.body.style.overflow = "auto"; 
         });
 
         // Resmin dışındaki karanlık alana tıklayınca da kapat
