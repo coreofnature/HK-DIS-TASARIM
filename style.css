@@ -91,7 +91,7 @@ header.mobile-menu-open .nav-container {
     height: 70px; 
 }
 
-/* --- LOGO TASARIMI VE KONUMU (REFACTOR EDİLDİ) --- */
+/* --- LOGO TASARIMI VE KONUMU --- */
 .logo {
     position: absolute;
     left: 8%; /* Altındaki 'DIŞ MEKÂNLARA' yazısının padding-left: 8% değeriyle KUSURSUZ hizalanır */
@@ -106,7 +106,7 @@ header.mobile-menu-open .logo {
     top: 10px; /* 70px yüksekliğindeki beyaz menüde 50px'lik kare logoyu tam ortalar */
 }
 
-/* 1. Başlangıçta Görünecek Geniş Logo (Büyütüldü) */
+/* 1. Başlangıçta Görünecek Geniş Logo */
 .logo-default {
     display: block;
     width: 380px; 
@@ -662,13 +662,13 @@ footer {
 
 /* --- ALT SAYFALAR İÇİN MİNİ-HERO --- */
 #inner-hero {
-    height: 45vh; /* Ana sayfadaki 100vh yerine daha kısa, şık bir tepe banner'ı */
+    height: 45vh; /* kısa, şık bir tepe banner'ı */
     display: flex;
     align-items: flex-end; 
     justify-content: flex-start; 
     position: relative;
     padding-bottom: 8vh; 
-    background-image: url('assets/img/banner/banner-1.jpg'); /* Arka plana şık bir manzara resmi */
+    background-image: url('assets/img/banner/banner-1.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -713,7 +713,7 @@ footer {
 }
 
 .section-description i {
-    color: var(--accent-color); /* İkon senin şık bej renginde yanacak */
+    color: var(--accent-color); 
     margin-right: 5px;
     font-size: 1.1rem;
 }
@@ -888,7 +888,6 @@ footer {
         margin-left: auto;
     }
 
-    /* --- İŞTE SİLİNEN VE SORUN YARATAN KISIM BURASI --- */
     /* Masaüstü menüsünü mobilde gizleyip açılır menüye çeviren kodlar */
     nav ul {
         display: none;

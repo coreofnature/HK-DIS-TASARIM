@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://coreofnature.github.io/HK-DIS-TASARIM/sitemap.xml
+Sitemap: https://hkdistasarim.com/sitemap.xml
