@@ -1044,3 +1044,62 @@ footer {
         box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     }
 }
+
+/* --- SABİT WHATSAPP HIZLI İLETİŞİM BUTONU --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: var(--white);
+    height: 60px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+    z-index: 9998; /* Lightbox'ın (9999) bir tık altında kalır */
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.whatsapp-float i {
+    font-size: 2rem;
+}
+
+.whatsapp-float-text {
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-left: 0;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #1ebe57;
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(37, 211, 102, 0.45);
+}
+
+.whatsapp-float:hover .whatsapp-float-text {
+    max-width: 200px;
+    opacity: 1;
+    margin-left: 10px;
+}
+
+@media (max-width: 900px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        padding: 0;
+    }
+    .whatsapp-float:hover .whatsapp-float-text {
+        display: none; /* Mobilde sadece ikon olarak kalır */
+    }
+}
